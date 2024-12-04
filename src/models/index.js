@@ -1,7 +1,7 @@
-const { Sequelize } = require("sequelize");
+const { DataTypes } = require("sequelize");
 const { sequelize } = require("../config/database.js");
 
 const db = {};
 
-db.Sequelize = Sequelize;
+db.DataTypes = DataTypes;
 db.sequelize = sequelize;
