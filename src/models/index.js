@@ -8,3 +8,6 @@ db.DataTypes = DataTypes;
 db.sequelize = sequelize;
 
 db.User = User(sequelize, DataTypes);
+
+
+module.exports = db;
