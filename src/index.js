@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const morgan = require("morgan");
 const { dbConnection } = require("./config/database.js");
+const rootRouter = require("./routes/index.js");
 const db = require("./models/index.js");
 const app = express();
 const PORT = 8081;
@@ -21,9 +22,7 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+app.use("/api", rootRouter);
 
 (async () => {
   try {
