@@ -8,20 +8,20 @@ services:
       - meeting-room-db
     networks:
       - meeting-room-network
-db:
-  image: mysql:latest
-  container_name: meeting-room-db
-  environment:
-    MYSQL_ROOT_PASSWORD: root
-    MYSQL_DATABASE: meeting_room
-    MYSQL_USER: user
-    MYSQL_PASSWORD: password
-  ports:
-    - "3306:3306"
-  volumes:
-    - meeting-room-db-data:/var/lib/mysql
-  networks:
-    - meeting-room-network
+  meeting-room-db:
+    image: mysql:latest
+    container_name: meeting-room-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: meeting_room
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - meeting-room-db-data:/var/lib/mysql
+    networks:
+      - meeting-room-network
 volumes:
   meeting-room-db-data:
     driver: local
