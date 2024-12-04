@@ -1,10 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const morgan = require("morgan");
 const { dbConnection } = require("./config/database.js");
 const db = require("./models/index.js");
 const app = express();
 const PORT = 8081;
+
+app.use(morgan("dev"));
 
 app.use(
   session({
