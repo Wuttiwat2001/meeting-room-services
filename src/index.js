@@ -1,9 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const sequelize = require("./config/database");
+const { dbConnection } = require("./config/database.js");
 const app = express();
-const PORT = 8080;
+const PORT = 8081;
 
 app.use(
   session({
@@ -22,16 +22,7 @@ app.get("/", (req, res) => {
 });
 
 
-sequelize.authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-    return sequelize.sync();
-  })
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+app.listen(PORT, async () => {
+  console.log(`Server is running on port ${PORT}`);
+  dbConnection();
+});
