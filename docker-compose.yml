@@ -1,0 +1,6 @@
+services:
+  meeting-room-services:
+    build: .
+    container_name: meeting-room-services
+    ports:
+      - "8080:8080"
