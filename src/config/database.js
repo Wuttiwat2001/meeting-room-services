@@ -1,12 +1,14 @@
 const { Sequelize } = require("sequelize");
 
+const sequelize = new Sequelize("meeting_room", "root", "root", {
+  host: "localhost",
+  port: 3306,
+  dialect: "mysql",
+  timezone: "+07:00",
+  logging: true,
+});
+
 const dbConnection = async () => {
-  const sequelize = new Sequelize("meeting_room", "root", "root", {
-    host: "localhost",
-    dialect: "mysql",
-    timezone: "+07:00",
-    logging: true,
-  });
   try {
     await sequelize.authenticate();
     console.log("Connection has been established successfully.");
@@ -15,4 +17,4 @@ const dbConnection = async () => {
   }
 };
 
-module.exports = { dbConnection };
+module.exports = { sequelize, dbConnection };
