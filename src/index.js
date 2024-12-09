@@ -5,8 +5,9 @@ const morgan = require("morgan");
 const { dbConnection } = require("./config/database.js");
 const rootRouter = require("./routes/index.js");
 const db = require("./models/index.js");
+const validateMiddleware = require("./middlewares/validation.js");
 const app = express();
-const PORT = 8081;
+const PORT = 8080;
 
 app.use(morgan("dev"));
 
@@ -22,7 +23,9 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(validateMiddleware);
 app.use("/api", rootRouter);
+
 
 (async () => {
   try {
