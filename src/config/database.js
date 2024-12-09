@@ -5,7 +5,7 @@ const sequelize = new Sequelize("meeting_room", "root", "root", {
   port: 3306,
   dialect: "mysql",
   timezone: "+07:00",
-  logging: true,
+  logging: false,
 });
 
 const dbConnection = async () => {
